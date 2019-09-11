@@ -1,0 +1,85 @@
+.row-title {
+	color: white;
+	z-index: 2;
+	padding-left: 2rem;
+}
+
+
+#overall-container {
+	position: relative;
+	z-index: 2;
+	transition: left 2s;
+}
+
+#next {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.5);
+	height: 25vh;
+	width: 4vw;
+	left: 95vw;
+	top: 2.5vh;
+	z-index: 2;
+	transition: background 1s;
+}
+
+#next:hover {
+	background: rgba(0, 0, 0, 1);
+}
+
+#next > p {
+	margin-top: 12.5vh;
+	color: white;
+}
+
+#previous {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.5);
+	height: 25vh;
+	width: 4vw;
+	left: 0vw;
+	top: 2.5vh;
+	z-index: 2;
+	transition: background 1s;
+}
+
+#previous:hover {
+	background: rgba(0, 0, 0, 1);
+}
+
+#previous > p {
+	margin-top: 12.5vh;
+	color: white;
+}
+
+#hidden-prev,
+#hidden-next {
+	position: absolute;
+	visibility: hidden;
+}
+
+#card-container {
+	display: grid;
+	color: white;
+	overflow: hidden;
+	z-index: 2;
+	grid-template-columns: 13vw repeat(20, 11.5vw);
+	scroll-behavior: smooth;
+}
+
+#card-container :nth-child(1) {
+	padding-left: 1.5vw;
+}
+
+#card-container :last-child {
+	padding-right: 1.5vw;
+}
+
+.cards {
+	height: 30vh;
+	width: 10vw;
+}
+
+.cards > img {
+	width: 100%;
+	height: 100%;
+}
