@@ -4,6 +4,24 @@ import Header from './Header';
 import Premiere from './premiere';
 import Cards from './cards';
 
+
+
+const categories = [
+	'popular',
+	'top_rated',
+	'upcoming'
+]
+
+
+const rows = () => {
+		return (
+			categories.map((x) =>
+				<Cards category={x} />
+				)
+			)
+}
+
+
 const App = () => {
   return (
     <div className="app">
@@ -11,7 +29,7 @@ const App = () => {
 		    <Header />
 		    <Premiere />
 	    </div>
-	    <Cards />
+	    {rows()}
     </div>
   );
 }
