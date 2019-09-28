@@ -1,22 +1,21 @@
-import React, {useState, useEffect} from 'react';
-import './cards.css';
-import axios from 'axios';
+import React, {useState, useEffect} from 'react'
+import './cards.css'
+import axios from 'axios'
 import Modal from './modal'
 
 const Cards = (props) => {											//try passing in as { title, topic }
 
 	const [images, setImages] = useState([]);
+	const [modal, setModal] = useState('');
+	const [viewModal, setViewModal] = useState(false);
+	const [videoLink, setVideoLink] = useState('')
 
-
-	const baseUrl = `https://api.themoviedb.org/3/movie/` + props.category + `?api_key=d5ba9815eee72ec8ecb7839af9af7ad6`; //use props.topic?
-
-	let newImages = [];
 
 
 	const handleClick = (e) => {
 		const element = e.target.nextElementSibling.nextElementSibling;
 		const windowSize = document.documentElement.scrollWidth;
-		const scrollDistance = ((windowSize * 2.43) * 0.6) / 5      //2.43 factor of how large element is to client size, traverse in 5 clicks
+		const scrollDistance = ((windowSize * 2.43) * 0.6) / 5;     //2.43 factor of how large element is to client size, traverse in 5 clicks
 		element.scrollLeft += scrollDistance;
 		const nextElement = e.target;
 		const prevElement = e.target.nextElementSibling;
@@ -29,7 +28,7 @@ const Cards = (props) => {											//try passing in as { title, topic }
 			nextElement.setAttribute("class", "hidden-next")
 		}
 	}, 500)
-	}
+	};
 
 	const handlePrevClick = (e) => {
 		const element = e.target.nextElementSibling;
@@ -47,10 +46,18 @@ const Cards = (props) => {											//try passing in as { title, topic }
 			prevElement.setAttribute("class", "hidden-prev")
 		}
 		}, 500)
-	}
+	};
 
 	const handleModal = (e) => {
-		console.log(e.target)
+		const relevant = images.find((img) => img.id.toString() === e.target.id);
+		setModal({ id: e.target.id, title: relevant.title, overview: relevant.overview });
+		document.body.style.overflowY = 'hidden';
+	}
+
+	const exit = (e) => {
+		setViewModal(false);
+		document.body.style.overflowY = 'scroll';
+		document.body.style.opacity = '1'
 	}
 																//pass in card titles as props
 	const rows = () => {
@@ -58,7 +65,7 @@ const Cards = (props) => {											//try passing in as { title, topic }
 			images.map((img) => {
 				return (
 					<div className="cards" key={img.id}>
-						<img src={img.image} onClick={handleModal}/>
+						<img src={img.image} id={img.id} onClick={handleModal} alt={img.title} />
 					</div>
 					)
 			})
@@ -68,25 +75,40 @@ const Cards = (props) => {											//try passing in as { title, topic }
 
 	useEffect(() => {
 		async function fetchdata() {
+			const baseUrl = `https://api.themoviedb.org/3/movie/` + props.category + `?api_key=d5ba9815eee72ec8ecb7839af9af7ad6`; //use props.topic?
 			const res = await axios.get(baseUrl);
-			const catalog = res.data.results.map(x => x.id);
-			const proImages = await getImages(catalog);
-		}
-		const getImages = (catalog) => {
-			new Promise ((resolve) => resolve(catalog.forEach((id) => axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=d5ba9815eee72ec8ecb7839af9af7ad6`)
-				.then((response) => {
-					newImages.push({ id : response.data.id, image : 'https://image.tmdb.org/t/p/w154' + response.data.poster_path });
-					setImages(images.concat(newImages));
-				}))))
-		}
+			const catalog = res.data.results.map(x => ({ id: x.id, title: x.title, overview: x.overview, image: 'https://image.tmdb.org/t/p/w154' + x.poster_path }));
+			setImages(catalog)
 		fetchdata()
 	}, [])
+
+	useEffect(() => {
+		const getKey = (res) => {
+			try {
+				const link = res.data.results[0].key
+				return link
+			}
+			catch {
+				return 'not found!'
+			}
+		}
+
+		async function fetchvideo() {
+			const res = await axios.get(`https://api.themoviedb.org/3/movie/${modal.id}/videos?api_key=d5ba9815eee72ec8ecb7839af9af7ad6&language=en-US`);
+			const link = await getKey(res);
+			const vid = 'https://youtube.com/embed/' +  link;
+			setVideoLink(vid);
+			setViewModal(true);
+		}
+		fetchvideo()
+	}, [modal])
 
 	return (
 		<>
 			<div className='row-title'>
-				<h2>{props.category}</h2>					
+				<h2>{props.category.replace('_', ' ').split(' ').map((x) => x[0].toUpperCase() + x.slice(1)).join(' ')}</h2>					
 			</div>
+			{ viewModal ? <Modal click={exit} id={modal.id} overview={modal.overview} video={videoLink} title={modal.title} /> : null}
 			<div className='overall-container'>
 				<div className='next' onClick={handleClick}>
 					<p>PH</p>

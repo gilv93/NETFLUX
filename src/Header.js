@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import './header.css';
+import React, {useEffect} from 'react'
+import './header.css'
 
 
 const Header = () => {

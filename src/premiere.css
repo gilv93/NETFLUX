@@ -1,5 +1,11 @@
+
+.premiere {
+	width: 100vw;
+	overflow: hidden;
+}
+
 .premiere > img {
-	width: 100%;
+	width: 100vw;
 	position: absolute;
 	z-index: 0;
 	padding: 0;
