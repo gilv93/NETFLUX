@@ -79,6 +79,7 @@ const Cards = (props) => {											//try passing in as { title, topic }
 			const res = await axios.get(baseUrl);
 			const catalog = res.data.results.map(x => ({ id: x.id, title: x.title, overview: x.overview, image: 'https://image.tmdb.org/t/p/w154' + x.poster_path }));
 			setImages(catalog)
+		}
 		fetchdata()
 	}, [])
 
