@@ -5,7 +5,6 @@ import Modal from './modal'
 
 const Cards = (props) => {											//try passing in as { title, topic }
 
-	const [images, setImages] = useState([]);
 	const [modal, setModal] = useState('');
 	const [viewModal, setViewModal] = useState(false);
 	const [videoLink, setVideoLink] = useState('')
@@ -49,8 +48,8 @@ const Cards = (props) => {											//try passing in as { title, topic }
 	};
 
 	const handleModal = (e) => {
-		const relevant = images.find((img) => img.id.toString() === e.target.id);
-		setModal({ id: e.target.id, title: relevant.title, overview: relevant.overview });
+		const relevant = props.images.find((img) => img.id.toString() === e.target.id);
+		setModal(relevant);
 		document.body.style.overflowY = 'hidden';
 	}
 
@@ -62,7 +61,7 @@ const Cards = (props) => {											//try passing in as { title, topic }
 																//pass in card titles as props
 	const rows = () => {
 		return (
-			images.map((img) => {
+			props.images.map((img) => {
 				return (
 					<div className="cards" key={img.id}>
 						<img src={img.image} id={img.id} onClick={handleModal} alt={img.title} />
@@ -73,15 +72,6 @@ const Cards = (props) => {											//try passing in as { title, topic }
 	}
 
 
-	useEffect(() => {
-		async function fetchdata() {
-			const baseUrl = `https://api.themoviedb.org/3/movie/` + props.category + `?api_key=d5ba9815eee72ec8ecb7839af9af7ad6`; //use props.topic?
-			const res = await axios.get(baseUrl);
-			const catalog = res.data.results.map(x => ({ id: x.id, title: x.title, overview: x.overview, image: 'https://image.tmdb.org/t/p/w154' + x.poster_path }));
-			setImages(catalog)
-		}
-		fetchdata()
-	}, [])
 
 	useEffect(() => {
 		const getKey = (res) => {
@@ -106,10 +96,7 @@ const Cards = (props) => {											//try passing in as { title, topic }
 
 	return (
 		<>
-			<div className='row-title'>
-				<h2>{props.category.replace('_', ' ').split(' ').map((x) => x[0].toUpperCase() + x.slice(1)).join(' ')}</h2>					
-			</div>
-			{ viewModal ? <Modal click={exit} id={modal.id} overview={modal.overview} video={videoLink} title={modal.title} /> : null}
+			{ viewModal ? <Modal click={exit} info={modal} video={videoLink} /> : null}
 			<div className='overall-container'>
 				<div className='next' onClick={handleClick}>
 					<p>PH</p>

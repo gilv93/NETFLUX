@@ -28,6 +28,7 @@
 .next > p {
 	margin-top: 12.5vh;
 	color: white;
+	pointer-events: none;
 }
 
 .previous {
@@ -48,6 +49,7 @@
 .previous > p {
 	margin-top: 12.5vh;
 	color: white;
+	pointer-events: none;
 }
 
 .hidden-prev,

@@ -34,8 +34,8 @@ const Modal = (props) => {
 	const loaded = () => {
 		return (
 			<div className='info'>
-			 	<h1>{props.title}</h1>
-			 	<p>{props.overview}</p> 
+			 	<h1>{props.info.title}</h1>
+			 	<p>{props.info.overview}</p> 
 			 	<button onClick={props.click}>exit</button>
 			 </div>
 			)
