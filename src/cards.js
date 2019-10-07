@@ -14,16 +14,17 @@ const Cards = (props) => {											//try passing in as { title, topic }
 	const handleClick = (e) => {
 		const element = e.target.nextElementSibling.nextElementSibling;
 		const windowSize = document.documentElement.scrollWidth;
-		const scrollDistance = ((windowSize * 2.43) * 0.6) / 5;     //2.43 factor of how large element is to client size, traverse in 5 clicks
+		const scrollDistance = (element.scrollWidth / 5)
 		element.scrollLeft += scrollDistance;
 		const nextElement = e.target;
 		const prevElement = e.target.nextElementSibling;
+		console.log(windowSize)
+		console.log(element.scrollWidth)
 		setTimeout(() => {
 			if (prevElement) {
 			prevElement.setAttribute("class", "previous")
 		}
-		const checkScroll = Math.round(10 * (element.scrollLeft / element.scrollWidth)) / 10 //know ratio is ~0.6 at max scroll
-		if (checkScroll === 0.6) {								//0.6 magic number pull out into constant
+		if (element.scrollLeft > element.scrollWidth - windowSize) {
 			nextElement.setAttribute("class", "hidden-next")
 		}
 	}, 500)
@@ -32,7 +33,7 @@ const Cards = (props) => {											//try passing in as { title, topic }
 	const handlePrevClick = (e) => {
 		const element = e.target.nextElementSibling;
 		const windowSize = document.documentElement.scrollWidth;
-		const scrollDistance = ((windowSize * 2.43) * 0.6) / 5
+		const scrollDistance = (element.scrollWidth / 5)
 		element.scrollLeft -= scrollDistance;
 		const prevElement = e.target;
 		const nextElement = e.target.previousElementSibling;
@@ -40,8 +41,7 @@ const Cards = (props) => {											//try passing in as { title, topic }
 			if (nextElement) {
 			nextElement.setAttribute("class", "next")
 		}
-		const checkScroll = Math.round(10 * (element.scrollLeft / element.scrollWidth)) / 10
-		if (checkScroll === 0) {
+		if (element.scrollLeft < 10) {
 			prevElement.setAttribute("class", "hidden-prev")
 		}
 		}, 500)
@@ -53,12 +53,26 @@ const Cards = (props) => {											//try passing in as { title, topic }
 		document.body.style.overflowY = 'hidden';
 	}
 
+
 	const exit = (e) => {
 		setViewModal(false);
 		document.body.style.overflowY = 'scroll';
 		document.body.style.opacity = '1'
 	}
-																//pass in card titles as props
+
+
+	const checkType = () => {
+		if (props.images.length > 8) {
+			return (
+					<div className='next' onClick={handleClick}>
+					<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg></div>
+				) 
+		}
+		else {
+			return <div className="hidden-next"></div>
+		}
+	}
+
 	const rows = () => {
 		return (
 			props.images.map((img) => {
@@ -70,7 +84,6 @@ const Cards = (props) => {											//try passing in as { title, topic }
 			})
 			)
 	}
-
 
 
 	useEffect(() => {
@@ -96,13 +109,11 @@ const Cards = (props) => {											//try passing in as { title, topic }
 
 	return (
 		<>
-			{ viewModal ? <Modal click={exit} info={modal} video={videoLink} /> : null}
+			{ viewModal ? <Modal click={exit} info={modal} video={videoLink} change={props.change} list={props.list} /> : null}
 			<div className='overall-container'>
-				<div className='next' onClick={handleClick}>
-					<p>PH</p>
-				</div>
+				{checkType()}
 				<div className='hidden-prev' onClick={handlePrevClick}>
-					<p>PH</p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg>
 				</div>
 				<div className='card-container'>
 					{rows()}

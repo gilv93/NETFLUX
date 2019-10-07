@@ -31,11 +31,16 @@ const Modal = (props) => {
 		}
 	}, [])
 
+	const add = () => {
+		props.change(props.info)
+	}
+
 	const loaded = () => {
 		return (
 			<div className='info'>
 			 	<h1>{props.info.title}</h1>
 			 	<p>{props.info.overview}</p> 
+			 	<button className="button" onClick={add}>+ My List</button>
 			 	<button onClick={props.click}>exit</button>
 			 </div>
 			)

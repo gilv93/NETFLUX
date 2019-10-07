@@ -30,3 +30,7 @@
 	font-size: 2rem;
 	margin-bottom: 16px;
 }
+
+.nav > svg {
+	filter: invert(1);
+}

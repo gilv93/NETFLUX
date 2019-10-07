@@ -22,7 +22,7 @@ const Categories = (props) => {
 			<div className='row-title'>
 				<h2>{props.category.replace('_', ' ').split(' ').map((x) => x[0].toUpperCase() + x.slice(1)).join(' ')}</h2>					
 			</div>
-			<Cards images={images} />
+			<Cards images={images} change={props.change} list={props.list} />
 		</>
 		)
 }

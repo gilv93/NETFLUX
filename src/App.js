@@ -27,7 +27,7 @@ const App = () => {
 			const baseUrl = `https://api.themoviedb.org/3/movie/` + categories[Math.round(Math.random()*2)] + `?api_key=d5ba9815eee72ec8ecb7839af9af7ad6`
 			const res = await axios.get(baseUrl)
 			const select = res.data.results[Math.round(Math.random()*19)]
-			const img = { title: select.title, id: select.id, overview: select.overview, image: 'https://image.tmdb.org/t/p/w154' + select.poster_path, backdrop_image: `http://image.tmdb.org/t/p/w1280` + select.backdrop_path }
+			const img = { id: select.id, title: select.title, overview: select.overview, image: 'https://image.tmdb.org/t/p/w154' + select.poster_path, backdrop_image: `http://image.tmdb.org/t/p/w1280` + select.backdrop_path }
 			setPImage(img)
 		}
 		fetchImage()
@@ -43,8 +43,16 @@ const App = () => {
 		}
 	})
 
+	const checkScroll = () => {
+		const element = document.getElementById('mylist').nextElementSibling 
+		const windowSize = document.documentElement.scrollWidth;
+		if (element.scrollLeft != element.scrollWidth - windowSize) {
+			{}
+		}
+	}
+
 	const handleList = (e) => {
-		if (myList.find((x) => x == pImage)) {
+		if (myList.find((x) => x.id === pImage.id)) {
 			{}
 		}
 		else {
@@ -52,10 +60,19 @@ const App = () => {
 		}
 	}
 
+	const handleModalList = (e) => {
+		if (myList.find((x) => x.id === e.id)) {
+			{}
+		}
+		else {
+			setMyList(myList.concat(e))
+		}
+	}
+
 	const list = () => {
 		return (
 			<>
-				<div className='row-title'>
+				<div className='row-title' id='mylist'>
 					<h2>My List</h2>					
 				</div>
 				<Cards images={myList} />
@@ -64,10 +81,10 @@ const App = () => {
 	}
 
 
-	const rows = () => {
+	const rows = (e) => {
 			return (
 				categories.map((x) =>
-					<Categories category={x} key={x} />
+					<Categories category={x} key={x} list={myList} change={handleModalList} />
 					)
 				)
 	}

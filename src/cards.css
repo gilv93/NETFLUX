@@ -8,14 +8,15 @@
 .overall-container {
 	position: relative;
 	z-index: 2;
+	overflow: hidden;
 }
 
 .next {
 	position: absolute;
 	background: rgba(0, 0, 0, 0.5);
 	height: 25vh;
-	width: 5vw;
-	left: 95vw;
+	width: 4vw;
+	right: 0;
 	top: 2.5vh;
 	z-index: 2;
 	transition: background 1s;
@@ -36,7 +37,7 @@
 	background: rgba(0, 0, 0, 0.5);
 	height: 25vh;
 	width: 4vw;
-	left: 0vw;
+	left: 0;
 	top: 2.5vh;
 	z-index: 2;
 	transition: background 1s;
@@ -46,11 +47,14 @@
 	background: rgba(0, 0, 0, 1);
 }
 
-.previous > p {
-	margin-top: 12.5vh;
-	color: white;
+.next > svg,
+.previous > svg {
+	position: absolute;
+	top: 33%;
+	filter: invert(1);
 	pointer-events: none;
 }
+
 
 .hidden-prev,
 .hidden-next {
