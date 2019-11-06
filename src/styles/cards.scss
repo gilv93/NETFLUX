@@ -1,14 +1,7 @@
-.row-title {
-	color: white;
-	z-index: 2;
-	padding-left: 2rem;
-}
-
 
 .overall-container {
 	position: relative;
-	z-index: 2;
-	overflow-x: hidden;
+	z-index: 0;
 }
 
 .next {
@@ -18,18 +11,12 @@
 	width: 4vw;
 	right: 0;
 	top: 2.5vh;
-	z-index: 2;
+	z-index: 100;
 	transition: background 1s;
-}
 
-.next:hover {
-	background: rgba(0, 0, 0, 1);
-}
-
-.next > p {
-	margin-top: 12.5vh;
-	color: white;
-	pointer-events: none;
+	&:hover {
+		background: rgba(0, 0, 0, 1);
+	}
 }
 
 .previous {
@@ -39,12 +26,12 @@
 	width: 4vw;
 	left: 0;
 	top: 2.5vh;
-	z-index: 2;
+	z-index: 100;
 	transition: background 1s;
-}
 
-.previous:hover {
-	background: rgba(0, 0, 0, 1);
+	&:hover {
+		background: rgba(0, 0, 0, 1);
+	}
 }
 
 .next > svg,
@@ -67,28 +54,25 @@
 	color: white;
 	overflow: hidden;
 	z-index: 2;
-	grid-template-columns: 13vw repeat(20, 11.5vw);
+	grid-template-columns: repeat(20, 11.5vw);
+	height: 31vh;
 	scroll-behavior: smooth;
+	margin-left: 1vw;
 }
 
-.card-container :nth-child(1) {
-	padding-left: 1.5vw;
-}
-
-.card-container :last-child {
-	padding-right: 1.5vw;
-}
 
 .cards {
 	height: 30vh;
 	width: 10vw;
-}
 
-.cards > img {
+	img {
 	width: 100%;
 	height: 100%;
-}
+	z-index: 10;
+	
+		&:hover {
+			border: solid white;
+		}
+	}
 
-.cards > img:hover {
-	transform: scale(1.5);
 }

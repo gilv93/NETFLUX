@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './App.css'
+import './styles/app.scss'
 import Header from './Header'
 import Premiere from './premiere'
 import Categories from './categories'
@@ -51,23 +51,24 @@ const App = () => {
 		}
 	}
 
-	const handleList = (e) => {
+	const handleList = () => {
 		if (myList.find((x) => x.id === pImage.id)) {
-			{}
+			setMyList(myList.filter((x) => x.id != pImage.id))
 		}
 		else {
 			setMyList(myList.concat(pImage))
 		}
 	}
 
-	const handleModalList = (e) => {
-		if (myList.find((x) => x.id === e.id)) {
-			{}
+	const handleModalList = (sub) => {
+		if (myList.find((x) => x.id === sub.id)) {
+			setMyList(myList.filter((x) => x.id != sub.id))
 		}
 		else {
-			setMyList(myList.concat(e))
+			setMyList(myList.concat(sub))
 		}
 	}
+
 
 	const list = () => {
 		return (
@@ -75,7 +76,7 @@ const App = () => {
 				<div className='row-title' id='mylist'>
 					<h2>My List</h2>					
 				</div>
-				<Cards images={myList} />
+				<Cards images={myList} id={'myList'} />
 			</>
 			)
 	}
@@ -88,9 +89,10 @@ const App = () => {
 					)
 				)
 	}
+
   return (
     <div className="app">
-    	<div className="container">
+    	<div className="header-container">
 		    <Header />
 		    <Premiere pImage={pImage} clicked={handleList} myList={myList} />
 	    </div>

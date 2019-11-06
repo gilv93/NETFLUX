@@ -1,5 +1,4 @@
-html,
-body {
+html {
 	height: 100%;
 	width: 100%;
 	margin: 0;
@@ -10,6 +9,6 @@ body {
 }
 
 body {
-	height: 100%;
+	@extend html;
 	overflow-x: hidden;
 }

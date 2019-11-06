@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import './cards.css'
+import './styles/categories.scss'
 import axios from 'axios'
 import Cards from './cards'
 
@@ -22,7 +22,7 @@ const Categories = (props) => {
 			<div className='row-title'>
 				<h2>{props.category.replace('_', ' ').split(' ').map((x) => x[0].toUpperCase() + x.slice(1)).join(' ')}</h2>					
 			</div>
-			<Cards images={images} change={props.change} list={props.list} />
+			<Cards images={images} change={props.change} list={props.list} id={props.category} />
 		</>
 		)
 }
