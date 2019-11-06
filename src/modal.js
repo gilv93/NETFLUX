@@ -36,7 +36,7 @@ const Modal = (props) => {
 			return (
 				<div className="button" onClick={add}>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
-					My List
+					&nbsp;My List
 				</div>
 			)
 		}
@@ -44,7 +44,7 @@ const Modal = (props) => {
 			return (
 				<div className="button" onClick={add}>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-					My List
+					&nbsp;My List
 				</div>
 			)
 		}
@@ -52,18 +52,17 @@ const Modal = (props) => {
 
 	const add = () => {
 		props.change(props.info)
-		console.log(props.info)
 	}
 
 	const loaded = () => {
 		return (
 			<div className='info'>
-				{pView()}
 				<div className="exit" onClick={props.click}>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 				</div>
 			 	<h1>{props.info.title}</h1>
 			 	<p>{props.info.overview}</p> 
+			 	{pView()}
 			 </div>
 			)
 	}

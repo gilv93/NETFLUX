@@ -42,7 +42,7 @@ const Premiere = (props) => {
 			return (
 				<div className="button" onClick={props.clicked}>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
-					My List
+					&nbsp;My List
 				</div>
 			)
 		}
@@ -50,7 +50,7 @@ const Premiere = (props) => {
 			return (
 				<div className="button" onClick={props.clicked}>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-					My List
+					&nbsp;My List
 				</div>
 			)
 		}
@@ -69,7 +69,7 @@ const Premiere = (props) => {
 						<div className="button-container">
 							<div className="button" onClick={play}>
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-								Pause
+								&nbsp;Pause
 							</div>
 							{pView()}
 						</div>
@@ -90,7 +90,7 @@ const Premiere = (props) => {
 					<div className="button-container">
 						<div className="button" onClick={play}>
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-							Play
+							&nbsp;Play
 						</div>
 						{pView()}
 					</div>
