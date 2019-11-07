@@ -54,13 +54,26 @@ const Modal = (props) => {
 		props.change(props.info)
 	}
 
+	const textCheck = () => {
+		if (props.info.title.length < 28) {
+			return (
+					<h1 id="info">{props.info.title}</h1>
+			)
+		}
+		else {
+			return (
+					<h1 id="info" style={{fontSize: "2em", paddingTop: "1.2em"}}>{props.info.title}</h1>
+			)
+		}
+	}
+
 	const loaded = () => {
 		return (
 			<div className='info'>
 				<div className="exit" onClick={props.click}>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 				</div>
-			 	<h1>{props.info.title}</h1>
+			 	{textCheck()}
 			 	<p>{props.info.overview}</p> 
 			 	{pView()}
 			 </div>
