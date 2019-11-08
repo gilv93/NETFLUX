@@ -115,7 +115,7 @@ const Cards = (props) => {											//try passing in as { title, topic }
 		async function fetchvideo() {
 
 			//TODO MORE API KEYS ARE U FFUCKING 
-			const res = await axios.get(`https://api.themoviedb.org/3/movie/${modal.id}/videos?api_key=d5ba9815eee72ec8ecb7839af9af7ad6&language=en-US`)
+			const res = await axios.get(`https://api.themoviedb.org/3/movie/${modal.id}/videos?api_key=${props.API}&language=en-US`)
 			.catch(error => 'empty');
 			if (res === 'empty') {
 				{}

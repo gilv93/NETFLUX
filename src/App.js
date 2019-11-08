@@ -16,6 +16,8 @@ const App = () => {
 	const [viewList, setViewList] = useState(false)
 	const [myList, setMyList] = useState([])
 
+	const API_KEY = process.env.REACT_APP_TMDB_API_KEY
+
 	const categories = [
 		'popular',
 		'top_rated',
@@ -24,7 +26,7 @@ const App = () => {
 
 	useEffect(() => {
 		async function fetchImage() {
-			const baseUrl = `https://api.themoviedb.org/3/movie/` + categories[Math.round(Math.random()*2)] + `?api_key=d5ba9815eee72ec8ecb7839af9af7ad6`
+			const baseUrl = `https://api.themoviedb.org/3/movie/` + categories[Math.round(Math.random()*2)] + `?api_key=${API_KEY}`
 			const res = await axios.get(baseUrl)
 			const select = res.data.results[Math.round(Math.random()*19)]
 			const img = { id: select.id, title: select.title, overview: select.overview, image: 'https://image.tmdb.org/t/p/w154' + select.poster_path, backdrop_image: `http://image.tmdb.org/t/p/w1280` + select.backdrop_path }
@@ -76,7 +78,7 @@ const App = () => {
 				<div className='row-title' id='mylist'>
 					<h2>My List</h2>					
 				</div>
-				<Cards images={myList} id={'myList'} />
+				<Cards images={myList} id={'myList'} API={API_KEY} />
 			</>
 			)
 	}
@@ -85,7 +87,7 @@ const App = () => {
 	const rows = (e) => {
 			return (
 				categories.map((x) =>
-					<Categories category={x} key={x} list={myList} change={handleModalList} />
+					<Categories category={x} key={x} list={myList} change={handleModalList} API={API_KEY} />
 					)
 				)
 	}
@@ -94,7 +96,7 @@ const App = () => {
     <div className="app">
     	<div className="header-container">
 		    <Header />
-		    <Premiere pImage={pImage} clicked={handleList} myList={myList} />
+		    <Premiere pImage={pImage} clicked={handleList} myList={myList} API={API_KEY} />
 	    </div>
 	    {viewList ? list() : null}
 	    {rows()}
