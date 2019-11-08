@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/NETFLUX/static/css/main.9b66a38b.chunk.css",
-    "main.js": "/NETFLUX/static/js/main.b3d00304.chunk.js",
-    "main.js.map": "/NETFLUX/static/js/main.b3d00304.chunk.js.map",
+    "main.css": "/NETFLUX/static/css/main.8a7da0cc.chunk.css",
+    "main.js": "/NETFLUX/static/js/main.8ec7733e.chunk.js",
+    "main.js.map": "/NETFLUX/static/js/main.8ec7733e.chunk.js.map",
     "runtime~main.js": "/NETFLUX/static/js/runtime~main.27a9e751.js",
     "runtime~main.js.map": "/NETFLUX/static/js/runtime~main.27a9e751.js.map",
     "static/js/2.843a1523.chunk.js": "/NETFLUX/static/js/2.843a1523.chunk.js",
     "static/js/2.843a1523.chunk.js.map": "/NETFLUX/static/js/2.843a1523.chunk.js.map",
     "index.html": "/NETFLUX/index.html",
-    "precache-manifest.8d48c449207d1d529554ef97fd8226dc.js": "/NETFLUX/precache-manifest.8d48c449207d1d529554ef97fd8226dc.js",
+    "precache-manifest.2cbe114759d0a064144f417b9503998a.js": "/NETFLUX/precache-manifest.2cbe114759d0a064144f417b9503998a.js",
     "service-worker.js": "/NETFLUX/service-worker.js",
-    "static/css/main.9b66a38b.chunk.css.map": "/NETFLUX/static/css/main.9b66a38b.chunk.css.map"
+    "static/css/main.8a7da0cc.chunk.css.map": "/NETFLUX/static/css/main.8a7da0cc.chunk.css.map"
   }
 }
