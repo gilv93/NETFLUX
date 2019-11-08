@@ -100,6 +100,19 @@
 	.iframe {
 		height: 40vh;
 	}
+
+	@media only screen and (orientation: landscape) {
+		.modal {
+
+			.info {
+				margin-top: 70vh;
+			}
+		}
+
+		.iframe {
+			height: 70vh;
+		}
+	}
 }
 
 @media only screen and (max-width: 450px) {
