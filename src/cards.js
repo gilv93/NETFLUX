@@ -129,6 +129,7 @@ const Cards = (props) => {											//try passing in as { title, topic }
 		fetchvideo()
 	}, [modal])
 
+
 	return (
 		<>
 			{ viewModal ? <Modal click={exit} info={modal} video={videoLink} change={props.change} list={props.list} /> : null}

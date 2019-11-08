@@ -83,3 +83,78 @@
 	height: 90vh;
 	z-index: 0;
 }
+
+@media only screen and (max-width: 900px) {
+	
+	.premiere {
+		position: flex;
+		height: 40vh;
+		width: 100%;
+		overflow: hidden;
+
+	}
+
+	.show img {
+		position: absolute;
+		height: 40vh;
+	}
+
+	.shadow {
+		width: 100%;
+		position: absolute;
+		padding: 0;
+		height: 40vh;
+		box-shadow: 30px -30px 50px 20px black inset;
+		z-index: 0;
+		background: rgba(0, 0, 0, 0.5);
+	}
+
+	.content {
+		position: absolute;
+		height: 40vh;
+		margin-top: 5vh;
+		overflow: hidden;
+
+		h1 {
+			font-size: 5em;
+			margin-bottom: 0.4em;
+		}
+
+		p {
+			font-size: 1.2em;
+			width: 50vw;
+		}
+
+		.button-container {
+			
+			.button {
+				height: 3vh;
+				width: 15vw;
+				font-size: 1em;
+			}
+		}
+	}
+
+}
+
+@media only screen and (max-width: 450px) {
+	.content {
+
+		h1 {
+			font-size: 6em;
+		}
+
+		p {
+			font-size: 1.6em;
+		}
+
+		.button-container {
+
+			.button {
+				height: 4vh;
+				width: 100%;
+				font-size: 2em;
+			}
+		}
+	}
+}

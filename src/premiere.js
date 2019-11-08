@@ -56,6 +56,39 @@ const Premiere = (props) => {
 		}
 	}
 
+	const playBtn = () => {
+		const doc = document.documentElement.clientWidth
+		if (doc > 768) {
+			return (
+				<div className="button" onClick={play}>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+					&nbsp;Play
+				</div>
+			)
+		}
+		else {
+			return null
+		}
+	}
+
+	const textCheck = () => {
+		try {
+			if (props.pImage.title.length < 20) {
+				return (
+					<h1 id="title">{props.pImage.title}</h1>
+				)
+			}
+			else {
+				return (
+					<h1 id="title" style={{fontSize: "3.5em"}}>{props.pImage.title}</h1>
+				)
+			}
+		}
+		catch {
+			{}
+		}
+	}
+
 	const playVideo = () => {
 		if (viewVideo) {
 			return (
@@ -86,12 +119,9 @@ const Premiere = (props) => {
 					<div className="shadow"></div>
 				</div>
 				<div className="content">
-					<h1>{props.pImage.title}</h1>
+					{textCheck()}
 					<div className="button-container">
-						<div className="button" onClick={play}>
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-							&nbsp;Play
-						</div>
+						{playBtn()}
 						{pView()}
 					</div>
 					<p>{props.pImage.overview}</p>
