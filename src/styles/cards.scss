@@ -8,11 +8,12 @@
 	position: absolute;
 	background: rgba(0, 0, 0, 0.5);
 	height: 25vh;
-	width: 4vw;
+	width: 3vw;
 	right: 0;
 	top: 2.5vh;
 	z-index: 100;
 	transition: background 1s;
+	margin: auto;
 
 	&:hover {
 		background: rgba(0, 0, 0, 0.8);
@@ -23,23 +24,35 @@
 	position: absolute;
 	background: rgba(0, 0, 0, 0.5);
 	height: 25vh;
-	width: 4vw;
+	width: 3vw;
 	left: 0;
 	top: 2.5vh;
 	z-index: 100;
 	transition: background 1s;
+	margin: auto;
 
 	&:hover {
 		background: rgba(0, 0, 0, 0.8);
 	}
 }
 
-.next > svg,
-.previous > svg {
-	position: absolute;
-	top: 33%;
-	filter: invert(1);
-	pointer-events: none;
+.next,
+.previous {
+
+	svg {
+		position: absolute;
+		top: 33%;
+		filter: invert(1);
+		pointer-events: none;
+	}
+}
+
+.next svg {
+	right: 0;
+}
+
+.previous svg {
+	left: 0;
 }
 
 
@@ -76,7 +89,7 @@
 
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1024px) {
 
 	.card-container {
 		display: grid;
@@ -84,7 +97,7 @@
 		overflow: hidden;
 		z-index: 2;
 		grid-template-columns: repeat(20, 20vw);
-		height: 20vh;
+		height: 21vh;
 		scroll-behavior: smooth;
 		margin-left: 1vw;
 	}
@@ -101,10 +114,9 @@
 		top: 2.5vh;
 		background: rgba(0, 0, 0, 0.8);
 	}
-
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 664px) {
 	.next,
 	.previous {
 		width: 10vw;
@@ -113,4 +125,42 @@
 			top: 28%;
 		}
 	}
+}
+
+@media only screen and (max-width: 900px) and (orientation: landscape) {
+	.card-container {
+		height: 51vh;
+
+		.cards {
+			height: 50vh;
+		}
+	}
+
+	.next,
+	.previous {
+		height: 40vh;
+		top: 5vh;
+		width: 6vw;
+	}
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 900px) and (orientation: landscape) {
+	.card-container {
+		height: 36vh;
+
+		.cards {
+			height: 35vh;
+		}
+	}
+
+	.next,
+	.previous {
+		height: 30vh;
+		top: 2.25vh;
+
+		svg {
+			top: 40%;
+		}
+	}
+
 }

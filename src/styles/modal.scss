@@ -85,15 +85,51 @@
 		left: 0;
 
 		.info {
-			margin-top: 25vh;
+			margin-top: 40vh;
 
 			h1 {
 				padding-top: 0;
+			}
+
+			.exit {
+				top: 0;
 			}
 		}
 	}
 
 	.iframe {
+		height: 40vh;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	.modal {
+
+		.info {
+			margin-top: 30vh;
+
+			h1 {
+				padding-top: 0;
+			}
+		}
+
+		.exit {
+			top: 0;
+		}
+	}
+
+	.iframe {
 		height: 30vh;
+	}
+}
+
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+	.modal {
+		width: 50vw;
+		left: 25vw;
+		
+		.info {
+			margin-top: 37vh;
+		}
 	}
 }

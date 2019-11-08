@@ -84,7 +84,8 @@
 	z-index: 0;
 }
 
-@media only screen and (max-width: 900px) {
+
+@media only screen and (max-width: 1024px) {
 	
 	.premiere {
 		position: flex;
@@ -135,9 +136,15 @@
 		}
 	}
 
+
+	@media only screen and (orientation: landscape) {
+		.premiere {
+			height: 100vh;
+		}
+	}
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 664px) {
 	.content {
 
 		h1 {
@@ -154,6 +161,26 @@
 				height: 4vh;
 				width: 100%;
 				font-size: 2em;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+	.premiere,
+	.shadow,
+	.content,
+	.show img {
+		height: 100vh;
+	}
+
+	.content {
+
+		.button-container {
+			height: 10vh;
+
+			.button {
+				height: 10vh;
 			}
 		}
 	}

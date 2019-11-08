@@ -55,14 +55,21 @@ const Modal = (props) => {
 	}
 
 	const textCheck = () => {
-		if (props.info.title.length < 28) {
+		const doc = document.documentElement.clientWidth
+		if (props.info.title.length < 20) {
 			return (
-					<h1 id="info">{props.info.title}</h1>
+				<h1 id="info">{props.info.title}</h1>
 			)
 		}
+		else if ((props.info.title.length > 20) && (doc >= 1024)) {
+			return (
+				<h1 id="info" style={{fontSize: "2em", paddingTop: "1.2em"}}>{props.info.title}</h1>
+			)
+		}
+
 		else {
 			return (
-					<h1 id="info" style={{fontSize: "2em", paddingTop: "1.2em"}}>{props.info.title}</h1>
+				<h1 id="info" style={{fontSize: "2em"}}>{props.info.title}</h1>
 			)
 		}
 	}

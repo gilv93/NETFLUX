@@ -58,16 +58,16 @@ const Premiere = (props) => {
 
 	const playBtn = () => {
 		const doc = document.documentElement.clientWidth
-		if (doc > 768) {
+		if (doc > 1024) {
 			return (
-				<div className="button" onClick={play}>
+				<div className="button play-btn" onClick={play}>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 					&nbsp;Play
 				</div>
 			)
 		}
 		else {
-			return null
+			{}
 		}
 	}
 
