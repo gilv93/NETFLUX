@@ -4,12 +4,13 @@ Welcome to Netflux, a React based netflix clone.
 
 ## Goal
 
-The goal of this project was to showcase and further my skills using the React framework. 
+The goal of this project was to showcase and further my skills using React and more specifically, React hooks. 
 
 I attempted to minimize the number of frameworks/libraries in this project in order to focus on using 
-more vanilla JS/CSS while attempting to depend on the frameworks mostly for code structure.
+more vanilla JS/CSS where I could.
 
 The Netflix Windows Desktop Application was the main inspiration for this clone project.
+
 
 ## Built with
 
@@ -20,12 +21,19 @@ The Netflix Windows Desktop Application was the main inspiration for this clone 
 
 ### Frameworks/Libraries
 * **React**
+* **React Hooks**
 * **SASS**
 * **Axios**
 
 ### APIs
 * **TMDB(The Movie Database)**
 * **Youtube**
+
+### Package Manager
+* **NPM(Node Package Manager)**
+
+## Site
+[NETFLUX] (https://gilv93.github.io/NETFLUX/) - Hosted by Github Pages.
 
 ## Author
 Gilbert Velazquez, 2019.
