@@ -32,21 +32,26 @@ const Modal = (props) => {
 	}, [])
 
 	const pView = () => {
-		if (props.list.find((x) => x.id === props.info.id)) {
-			return (
-				<div className="button" onClick={add}>
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
-					&nbsp;My List
-				</div>
-			)
+		try {
+		 	if (props.list.find((x) => x.id === props.info.id)) {
+					return (
+						<div className="button" onClick={add}>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+							&nbsp;My List
+						</div>
+					)
+				}
+			else {
+				return (
+					<div className="button" onClick={add}>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+						&nbsp;My List
+					</div>
+				)
+			}
 		}
-		else {
-			return (
-				<div className="button" onClick={add}>
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-					&nbsp;My List
-				</div>
-			)
+		catch {
+			{}
 		}
 	}
 
@@ -58,7 +63,7 @@ const Modal = (props) => {
 		const doc = document.documentElement.clientWidth
 		if ((props.info.title.length > 20) && (doc >= 1025)) {
 			return (
-				<h1 id="info">{props.info.title}</h1>
+				<h1 id="info" style={{fontSize: "2em", paddingTop: "1.2em"}}>{props.info.title}</h1>
 			)
 		}
 		else if (props.info.title.length > 20) {
@@ -66,10 +71,14 @@ const Modal = (props) => {
 				<h1 id="info" style={{fontSize: "2em", paddingTop: "1.2em"}}>{props.info.title}</h1>
 			)
 		}
-
+		else if ((props.info.title.length < 20) && (doc < 1025)) {
+			return (
+				<h1 id="info" style={{fontSize:"2em", paddingTop: "1.2em"}}>{props.info.title}</h1>
+			)
+		}
 		else {
 			return (
-				<h1 id="info" style={{fontSize: "2em", paddingTop: "1.2em"}}>{props.info.title}</h1>
+				<h1 id="info">{props.info.title}</h1>
 			)
 		}
 	}

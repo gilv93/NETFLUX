@@ -7,11 +7,16 @@ const Header = () => {
 	const handleScroll = () => {
 		let element = document.getElementById('header');
 		let html = document.documentElement;
-		if (html.scrollTop === 0) {
-			element.style.background = "rgba(0, 0, 0, 0)";
+		try {
+			if (html.scrollTop === 0) {
+				element.style.background = "rgba(0, 0, 0, 0)";
+			}
+			else {
+				element.style.background = "black";
+			}
 		}
-		else {
-			element.style.background = "black";
+		catch {
+			{}
 		}
 	}
 	

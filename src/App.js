@@ -3,9 +3,9 @@ import './styles/app.scss'
 import Header from './Header'
 import Premiere from './premiere'
 import Categories from './categories'
-import List from './mylist.js'
-import axios from 'axios'
 import Cards from './cards'
+import Footer from './footer'
+import axios from 'axios'
 
 
 
@@ -100,6 +100,7 @@ const App = () => {
 	    </div>
 	    {viewList ? list() : null}
 	    {rows()}
+	    <Footer />
     </div>
   );
 }

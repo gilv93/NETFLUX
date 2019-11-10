@@ -21,7 +21,6 @@ const Premiere = (props) => {
 		}
 
 		async function fetchvideo() {
-			//TODO DID YOU COMMIT THIS API KEY
 			const res = await axios.get(`https://api.themoviedb.org/3/movie/${props.pImage.id}/videos?api_key=${props.API}&language=en-US`)
 			.catch(error => 'empty');
 			if (res === 'empty') {
