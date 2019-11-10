@@ -4,7 +4,7 @@ Welcome to Netflux, a React based Netflix clone.
 
 ## Goal
 
-The goal of this project was to showcase and further my skills using React and more specifically, React hooks. 
+The goal of this project was to showcase and further my skills using React, and more specifically, React hooks. 
 
 I attempted to minimize the number of frameworks/libraries in this project in order to focus on using 
 more vanilla JS/CSS where I could.
