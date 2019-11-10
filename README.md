@@ -1,6 +1,6 @@
 # NETFLUX
 
-Welcome to Netflux, a React based netflix clone.
+Welcome to Netflux, a React based Netflix clone.
 
 ## Goal
 
