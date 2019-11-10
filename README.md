@@ -33,7 +33,7 @@ The Netflix Windows Desktop Application was the main inspiration for this clone 
 * **NPM(Node Package Manager)**
 
 ## Site
-[NETFLUX] (https://gilv93.github.io/NETFLUX/) - Hosted by Github Pages.
+[NETFLUX](https://gilv93.github.io/NETFLUX/) - Hosted by Github Pages.
 
 ## Author
 Gilbert Velazquez, 2019.
