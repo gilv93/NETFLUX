@@ -121,7 +121,7 @@ const Cards = (props) => {											//try passing in as { title, topic }
 				<div className='hidden-prev' onClick={handlePrevClick}>
 					<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg>
 				</div>
-				<div className='card-container' ref={containerRef}>
+				<div className='card-container'>
 					{rows()}
 				</div>
 			</div>
