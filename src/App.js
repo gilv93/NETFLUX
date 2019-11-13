@@ -28,7 +28,7 @@ const App = () => {
 		async function fetchImage() {
 			const baseUrl = `https://api.themoviedb.org/3/movie/` + categories[Math.round(Math.random()*2)] + `?api_key=${API_KEY}`
 			const res = await axios.get(baseUrl)
-			const select = res.data.results[Math.round(Math.random()*19)]
+			const select = res.data.results[Math.round(Math.random()*19)] //19 is n-1 objects in 1 page of API response
 			const img = { id: select.id, title: select.title, overview: select.overview, image: 'https://image.tmdb.org/t/p/w154' + select.poster_path, backdrop_image: `http://image.tmdb.org/t/p/w1280` + select.backdrop_path }
 			setPImage(img)
 		}

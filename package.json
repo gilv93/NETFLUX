@@ -1,5 +1,6 @@
 {
   "name": "netflix_clone",
+  "homepage": "https://gilv93.github.io/NETFLUX",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,7 +10,6 @@
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1"
   },
-  "homepage": "https://gilv93.github.io/NETFLUX",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

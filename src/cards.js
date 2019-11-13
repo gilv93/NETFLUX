@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import './styles/cards.scss'
 import axios from 'axios'
 import Modal from './modal'
@@ -7,10 +7,7 @@ const Cards = (props) => {											//try passing in as { title, topic }
 
 	const [modal, setModal] = useState('');
 	const [viewModal, setViewModal] = useState(false);
-	const [videoLink, setVideoLink] = useState('')
-
-	const containerRef = useRef()								
-
+	const [videoLink, setVideoLink] = useState('')								
 
 	const handleClick = (e) => {
 		const element = e.target.nextElementSibling.nextElementSibling;
@@ -86,19 +83,6 @@ const Cards = (props) => {											//try passing in as { title, topic }
 			})
 			)
 	}
-
-/*	useEffect(() => {									//checks on refresh if arrow containers need to render if lists not repositioned
-		const checkPosition = containerRef.current
-		const windowSize = document.documentElement.scrollWidth
-		if (checkPosition.scrollLeft != 0) {
-			const nextElement = checkPosition.previousElementSibling.previousElementSibling;
-			const prevElement = checkPosition.previousElementSibling;
-			prevElement.setAttribute("class", "previous")
-			if (checkPosition.scrollLeft > checkPosition.scrollWidth - windowSize) {
-				nextElement.setAttribute("class", "hidden-next")
-			}
-		}
-	}, [])*/
 
 
 	useEffect(() => {

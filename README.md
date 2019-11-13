@@ -36,4 +36,4 @@ The Netflix Windows Desktop Application was the main inspiration for this clone 
 [NETFLUX](https://gilv93.github.io/NETFLUX/) - Hosted by Github Pages.
 
 ## Author
-Gilbert Velazquez, 2019.
+[Gilbert Velazquez](https://gilv93.github.io/portfolio), 2019.
