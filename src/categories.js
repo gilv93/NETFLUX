@@ -9,9 +9,9 @@ const Categories = (props) => {
 
 	useEffect(() => {
 		async function fetchdata() {
-			const baseUrl = `https://api.themoviedb.org/3/movie/` + props.category + `?api_key=${props.API}`; //use props.topic?
+			const baseUrl = `https://shielded-castle-53505.herokuapp.com/movies/` + props.category; //use props.topic?
 			const res = await axios.get(baseUrl);
-			const catalog = res.data.results.map(x => ({ id: x.id, title: x.title, overview: x.overview, image: 'https://image.tmdb.org/t/p/w154' + x.poster_path }));
+			const catalog = res.data.map(x => ({ id: x.id, title: x.title, overview: x.overview, image: 'https://image.tmdb.org/t/p/w154' + x.image, video: x.video}));
 			setImages(catalog)
 		}
 		fetchdata()
@@ -22,7 +22,7 @@ const Categories = (props) => {
 			<div className='row-title'>
 				<h2>{props.category.replace('_', ' ').split(' ').map((x) => x[0].toUpperCase() + x.slice(1)).join(' ')}</h2>					
 			</div>
-			<Cards images={images} change={props.change} list={props.list} id={props.category} API={props.API} />
+			<Cards images={images} change={props.change} list={props.list} id={props.category} />
 		</>
 		)
 }

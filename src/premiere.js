@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './styles/premiere.scss'
-import axios from 'axios'
 
 const Premiere = (props) => {
 
@@ -10,25 +9,13 @@ const Premiere = (props) => {
 
 
 	useEffect(() => {
-		const getKey = (res) => {
-			try {
-				const link = res.data.results[0].key
-				return link
-			}
-			catch {
-				return 'not found!'
-			}
-		}
 
 		async function fetchvideo() {
-			const res = await axios.get(`https://api.themoviedb.org/3/movie/${props.pImage.id}/videos?api_key=${props.API}&language=en-US`)
-			.catch(error => 'empty');
-			if (res === 'empty') {
+			if (props.pImage.video === undefined) {
 				{}
 			}
 			else {
-				const link = await getKey(res);
-				//TODO PULL THIS INTO A FUNCTION U BUM
+				const link = props.pImage.video
 				const vid = 'https://youtube.com/embed/' +  link + '?autoplay=1&controls=0&modestbranding=1';
 				videoRef.current = vid;
 			}

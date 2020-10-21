@@ -61,25 +61,30 @@ const Modal = (props) => {
 
 	const textCheck = () => {
 		const doc = document.documentElement.clientWidth
-		if ((props.info.title.length > 20) && (doc >= 1025)) {
-			return (
-				<h1 id="info" style={{fontSize: "2em", paddingTop: "1.2em"}}>{props.info.title}</h1>
-			)
+		try {
+			if ((props.info.title.length > 20) && (doc >= 1025)) {
+				return (
+					<h1 id="info" style={{fontSize: "2em", paddingTop: "1.2em"}}>{props.info.title}</h1>
+				)
+			}
+			else if (props.info.title.length > 20) {
+				return (
+					<h1 id="info" style={{fontSize: "2em", paddingTop: "1.2em"}}>{props.info.title}</h1>
+				)
+			}
+			else if ((props.info.title.length < 20) && (doc < 1025)) {
+				return (
+					<h1 id="info" style={{fontSize:"2em", paddingTop: "1.2em"}}>{props.info.title}</h1>
+				)
+			}
+			else {
+				return (
+					<h1 id="info">{props.info.title}</h1>
+				)
+			}
 		}
-		else if (props.info.title.length > 20) {
-			return (
-				<h1 id="info" style={{fontSize: "2em", paddingTop: "1.2em"}}>{props.info.title}</h1>
-			)
-		}
-		else if ((props.info.title.length < 20) && (doc < 1025)) {
-			return (
-				<h1 id="info" style={{fontSize:"2em", paddingTop: "1.2em"}}>{props.info.title}</h1>
-			)
-		}
-		else {
-			return (
-				<h1 id="info">{props.info.title}</h1>
-			)
+		catch {
+			{}
 		}
 	}
 

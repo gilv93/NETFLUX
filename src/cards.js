@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import './styles/cards.scss'
-import axios from 'axios'
 import Modal from './modal'
 
 const Cards = (props) => {											//try passing in as { title, topic }
 
 	const [modal, setModal] = useState('');
 	const [viewModal, setViewModal] = useState(false);
-	const [videoLink, setVideoLink] = useState('')								
-
+	const [videoLink, setVideoLink] = useState('')			
+	
 	const handleClick = (e) => {
 		const element = e.target.nextElementSibling.nextElementSibling;
 		const windowSize = document.documentElement.scrollWidth;
@@ -28,7 +27,7 @@ const Cards = (props) => {											//try passing in as { title, topic }
 
 	const handlePrevClick = (e) => {
 		const element = e.target.nextElementSibling;
-		const windowSize = document.documentElement.scrollWidth;
+		// const windowSize = document.documentElement.scrollWidth;
 		const scrollDistance = (element.scrollWidth / 5)
 		element.scrollLeft -= scrollDistance;
 		const prevElement = e.target;
@@ -86,25 +85,13 @@ const Cards = (props) => {											//try passing in as { title, topic }
 
 
 	useEffect(() => {
-		const getKey = (res) => {
-			try {
-				const link = res.data.results[0].key
-				return link
-			}
-			catch {
-				return 'not found!'
-			}
-		}
 
 		async function fetchvideo() {
-			const res = await axios.get(`https://api.themoviedb.org/3/movie/${modal.id}/videos?api_key=${props.API}&language=en-US`)
-			.catch(error => 'empty');
-			if (res === 'empty') {
+			if (modal.video === undefined) {
 				{}
 			}
 			else {
-				const link = await getKey(res);
-				const vid = 'https://youtube.com/embed/' +  link;
+				const vid = 'https://youtube.com/embed/' +  modal.video;
 				setVideoLink(vid);
 				setViewModal(true);
 			}
